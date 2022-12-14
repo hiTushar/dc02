@@ -12,6 +12,7 @@ export default function Card(props) {
     const {
         avatar_url,
         name, 
+        full_name,
         stars,
         description,
         languages_url,
@@ -23,7 +24,7 @@ export default function Card(props) {
     useEffect(() => {
         fetch(languages_url, requestOptions)
             .then(response => response.json())
-            .then(result => setLanguages(Object.keys(result)))
+            .then(result => setLanguages(Object.keys(result).slice(0, 3)))
             .catch(error => console.log('error', error));
     }, [])
 
@@ -34,7 +35,8 @@ export default function Card(props) {
             </div>
             <div className="card-name">
                 <a href={html_url}>
-                    {name}
+                    {full_name.split("/")[0]}/
+                    <b>{name}</b>
                 </a>
             </div>
             <div className="card-stars">
