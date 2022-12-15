@@ -17,6 +17,7 @@ export default function SearchPage() {
     const [query, setQuery] = useState('');
     const [data, setData] = useState([]);
     const [sort, setSort] = useState("");
+    const [sortOrder, setSortOrder] = useState("desc");
     const [loading, setLoading] = useState(false);
 
     const apiCall = () => {
@@ -31,8 +32,8 @@ export default function SearchPage() {
     }
 
     useEffect(() => {
-        setData(_.orderBy(data, sort, "desc"));
-    }, [sort])
+        setData(_.orderBy(data, sort, sortOrder));
+    }, [sort, sortOrder])
 
     return (
         <div className="search-page">
@@ -40,7 +41,7 @@ export default function SearchPage() {
                 <Search onChange={setQuery} onClick={apiCall}/>
                 { 
                     data.length 
-                        ? <Sort onChange={setSort}/>
+                        ? <Sort onChange={setSort} sort={sort} setSortOrder={setSortOrder} sortOrder={sortOrder}/>
                         : null
                 }
             </div>

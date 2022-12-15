@@ -1,7 +1,6 @@
 import Card from "./Card";
 
 export default function Results(props) {
-    console.log(props.data);
     return (
         <div className="result">
             {
@@ -16,7 +15,6 @@ export default function Results(props) {
                         languages_url,
                         html_url
                     };
-                    console.log(cardProps);
                     return <Card key={id} cardProps={cardProps} />
                 })
             }

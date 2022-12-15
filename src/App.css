@@ -40,6 +40,10 @@ a {
   font-size: 0.9rem;
 }
 
+.result-sort Button {
+  width: 60px;
+}
+
 .result {
   width: 100%;
   display: grid;

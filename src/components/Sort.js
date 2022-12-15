@@ -1,4 +1,4 @@
-import { Select } from "antd";
+import { Select, Button } from "antd";
 
 export default function Sort(props) {
     const options = [
@@ -36,7 +36,12 @@ export default function Sort(props) {
                 options={options}
                 className="card-sort"
                 placeholder="sort preference.."
-            />
+            />&nbsp;
+            {
+                props.sort 
+                    ? <Button onClick={() => props.setSortOrder(props.sortOrder === "asc" ? "desc" : "asc")}>{props.sortOrder === "asc" ? "⬇" : "⬆"}</Button> 
+                    : null
+            }
         </div>
     )
 }
