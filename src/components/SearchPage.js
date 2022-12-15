@@ -25,7 +25,6 @@ export default function SearchPage() {
             .then(response => response.json())
             .then(result => {
                 setLoading(false);
-                console.log(result.item);
                 if(!_.isEmpty(result.items)) setData(result.items);
             })
             .catch(error => console.log('error', error));
