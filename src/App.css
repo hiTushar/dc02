@@ -1,3 +1,15 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(95, 217, 251);
+}
+
+a {
+  text-decoration: none;
+}
+
 .App {
   padding: 50px;
 }
@@ -13,10 +25,21 @@
   align-items: center;
 }
 
+.search-page-controls {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+}
+
+.result-sort {
+  font-size: 0.9rem;
+}
+
 .result {
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .result li:not(:last-child)::after {
@@ -24,36 +47,73 @@
 }
 
 .card {
-  border: solid 1px;
-  width: 400px;
-  height: 200px;
+  height: 110px;
   margin: 10px;
-  padding: 5px;
+  padding: 10px;
 
   display: grid;
+  grid-template-columns: repeat(10, 10%);
+  grid-template-rows: repeat(5, 20%);
+
+  background-color: rgb(250, 250, 242);
+  border-radius: 10px;
 }
 
 .card-sort {
   width: 250px;
 }
 
+.card-avatar {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+}
 .card-avatar img {
   width: 40px;
   border-radius: 50%;
 }
 
 .card-description {
+  line-height: 1.5rem; /* Sets line height to 1.5 times text size */
   overflow: hidden;
+  white-space:nowrap;
   text-overflow: ellipsis;
+  vertical-align: middle;
+  font-size: 0.7rem;
+  grid-row: 2 / 3;
+  grid-column: 3 / 11;
 }
 
 .card-name {
   overflow: hidden;
   text-overflow: ellipsis;
+  grid-column: 3 / 11;
+}
+
+.card-stars {
+  grid-row: 5 / 6;
+  grid-column: 1 / 3;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+}
+
+.card-stars img {
+  width: 15px;
+}
+
+.card-language {
+  grid-row: 5 / 6;
+  grid-column: 3 / 11;
+
+  font-size: 0.8rem;
 }
 
 .card-language ul {
   padding-inline-start: 0px;
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  display: flex;
+  align-items: center;
 }
 
 .card-language li {

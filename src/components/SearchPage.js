@@ -5,7 +5,7 @@ import Search from "./Search";
 import Sort from "./Sort";
 
 let myHeaders = new Headers();
-myHeaders.append("Authorization", "Bearer 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");
+myHeaders.append("Authorization", `Bearer ${process.env.REACT_APP_API_ACCESS}`);
 let requestOptions = {
     method: 'GET',
     headers: myHeaders,
@@ -18,11 +18,11 @@ export default function SearchPage() {
     const [sort, setSort] = useState("");
 
     const apiCall = () => {
-        fetch(`https://api.github.com/search/repositories?q=${query}&per_page=10`, requestOptions)
+        fetch(`https://api.github.com/search/repositories?q=${query}&per_page=20`, requestOptions)
             .then(response => response.json())
             .then(result => {
                 console.log(result.item);
-                setData(result.items);
+                if(!_.isEmpty(result.items)) setData(result.items);
             })
             .catch(error => console.log('error', error));
     }
@@ -33,8 +33,10 @@ export default function SearchPage() {
 
     return (
         <div className="search-page">
-            <Search onChange={setQuery} onClick={apiCall}/>
-            <Sort onChange={setSort}/>
+            <div className="search-page-controls">
+                <Search onChange={setQuery} onClick={apiCall}/>
+                <Sort onChange={setSort}/>
+            </div>
             { 
                 data.length 
                     ? <Results data={data}/> 

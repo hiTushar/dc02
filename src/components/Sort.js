@@ -29,10 +29,14 @@ export default function Sort(props) {
          },
     ]
     return (
-        <Select 
-            onChange={(value) => props.onChange(value)}
-            options={options}
-            className="card-sort"
-        />
+        <div className="result-sort">
+            Sort By:&nbsp;
+            <Select 
+                onChange={(value) => props.onChange(value)}
+                options={options}
+                className="card-sort"
+                placeholder="sort preference.."
+            />
+        </div>
     )
 }

@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import star from "../assets/star.png"
 
 let myHeaders = new Headers();
-myHeaders.append("Authorization", "Bearer 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");
+myHeaders.append("Authorization", `Bearer ${process.env.REACT_APP_API_ACCESS}`);
 let requestOptions = {
     method: 'GET',
     headers: myHeaders,
@@ -34,13 +35,16 @@ export default function Card(props) {
                 <img src={avatar_url} />
             </div>
             <div className="card-name">
-                <a href={html_url}>
+                <a href={html_url} target="__blank">
                     {full_name.split("/")[0]}/
                     <b>{name}</b>
                 </a>
             </div>
             <div className="card-stars">
-                {stars}
+                <img src={star} />&nbsp;
+                <span>
+                    {stars}
+                </span>
             </div>
             <div className="card-description">
                 {description}

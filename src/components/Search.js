@@ -6,7 +6,7 @@ export default function Search(props) {
     return (
         <div className="search">
             <form onSubmit={(e) => e.preventDefault()}>
-                <Input onChange={(e) => onChange(e.target.value)} />
+                <Input onChange={(e) => onChange(e.target.value)} />&nbsp;
                 <Button onClick={onClick}>Search</Button>
             </form>
         </div>
