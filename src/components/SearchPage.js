@@ -3,6 +3,7 @@ import _ from "lodash";
 import Results from "./Results";
 import Search from "./Search";
 import Sort from "./Sort";
+import Loader from "./Loader";
 
 let myHeaders = new Headers();
 myHeaders.append("Authorization", `Bearer ${process.env.REACT_APP_API_ACCESS}`);
@@ -16,11 +17,14 @@ export default function SearchPage() {
     const [query, setQuery] = useState('');
     const [data, setData] = useState([]);
     const [sort, setSort] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const apiCall = () => {
+        setLoading(true);
         fetch(`https://api.github.com/search/repositories?q=${query}&per_page=20`, requestOptions)
             .then(response => response.json())
             .then(result => {
+                setLoading(false);
                 console.log(result.item);
                 if(!_.isEmpty(result.items)) setData(result.items);
             })
@@ -42,9 +46,11 @@ export default function SearchPage() {
                 }
             </div>
             { 
-                data.length 
-                    ? <Results data={data}/> 
-                    : null 
+                loading
+                    ? <Loader />
+                    : data.length 
+                        ? <Results data={data}/> 
+                        : null 
             }
         </div>
     )
