@@ -4,6 +4,7 @@
 
 body {
   background-color: rgb(95, 217, 251);
+  height: 100vh;
 }
 
 a {
@@ -30,6 +31,9 @@ a {
   display: flex;
   justify-content: space-between;
   margin: 10px;
+}
+.search-page-controls.search-init {
+  justify-content: center;
 }
 
 .result-sort {

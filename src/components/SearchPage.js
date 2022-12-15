@@ -33,14 +33,18 @@ export default function SearchPage() {
 
     return (
         <div className="search-page">
-            <div className="search-page-controls">
+            <div className={`search-page-controls ${data.length ? "" : "search-init"}`}>
                 <Search onChange={setQuery} onClick={apiCall}/>
-                <Sort onChange={setSort}/>
+                { 
+                    data.length 
+                        ? <Sort onChange={setSort}/>
+                        : null
+                }
             </div>
             { 
                 data.length 
                     ? <Results data={data}/> 
-                    : <></> 
+                    : null 
             }
         </div>
     )
