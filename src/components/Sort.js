@@ -1,4 +1,4 @@
-import { Select, Button } from "antd";
+import { Select, Button, Tooltip } from "antd";
 
 export default function Sort(props) {
     const options = [
@@ -39,7 +39,11 @@ export default function Sort(props) {
             />&nbsp;
             {
                 props.sort 
-                    ? <Button onClick={() => props.setSortOrder(props.sortOrder === "asc" ? "desc" : "asc")}>{props.sortOrder === "asc" ? "⬇" : "⬆"}</Button> 
+                    ? (
+                        <Tooltip title={props.sortOrder === "asc" ? "switch to descending order" : "switch to ascending order"}>
+                            <Button onClick={() => props.setSortOrder(props.sortOrder === "asc" ? "desc" : "asc")}>{props.sortOrder === "asc" ? "⬇" : "⬆"}</Button> 
+                        </Tooltip>
+                    )
                     : null
             }
         </div>
