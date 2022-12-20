@@ -27,7 +27,7 @@ a {
 }
 
 .search-page-controls {
-  width: 50%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   margin: 10px;
@@ -189,5 +189,30 @@ a {
   }  20% { 
     transform: scaleY(1.0);
     -webkit-transform: scaleY(1.0);
+  }
+}
+
+.pages ul li {
+  display: inline;
+  margin-inline: 10px;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 1400px) {
+  .result {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .result {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .search-page-controls {
+    flex-direction: column;
+    height: 80px;
   }
 }
